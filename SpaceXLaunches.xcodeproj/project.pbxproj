@@ -12,14 +12,15 @@
 		795F28912CB308A1005CC9D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795F28902CB308A1005CC9D4 /* Assets.xcassets */; };
 		795F28942CB308A1005CC9D4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 795F28932CB308A1005CC9D4 /* Base */; };
 		795F289F2CB308A1005CC9D4 /* SpaceXLaunchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F289E2CB308A1005CC9D4 /* SpaceXLaunchesTests.swift */; };
-		795F28C42CB31342005CC9D4 /* APIClientLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28C32CB31342005CC9D4 /* APIClientLive.swift */; };
 		795F28C62CB31382005CC9D4 /* NetworkAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28C52CB31382005CC9D4 /* NetworkAgent.swift */; };
 		795F28C82CB313D4005CC9D4 /* APIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28C72CB313D4005CC9D4 /* APIType.swift */; };
-		795F28CA2CB31420005CC9D4 /* APIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28C92CB31420005CC9D4 /* APIClientMock.swift */; };
 		795F28CD2CB31565005CC9D4 /* UIKitNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 795F28CC2CB31565005CC9D4 /* UIKitNavigation */; };
 		795F28CF2CB31565005CC9D4 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 795F28CE2CB31565005CC9D4 /* Dependencies */; };
 		795F28D32CB31668005CC9D4 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 795F28D22CB31668005CC9D4 /* SnapshotTesting */; };
 		795F28D52CB31757005CC9D4 /* SpaceXAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28D42CB31757005CC9D4 /* SpaceXAPI.swift */; };
+		795F28D82CB32AC3005CC9D4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28D72CB32AC3005CC9D4 /* APIClient.swift */; };
+		795F28DC2CB32C21005CC9D4 /* LaunchDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28DB2CB32C21005CC9D4 /* LaunchDto.swift */; };
+		795F28E02CB332AB005CC9D4 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28DF2CB332AB005CC9D4 /* Launch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,11 +42,12 @@
 		795F28952CB308A1005CC9D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		795F289A2CB308A1005CC9D4 /* SpaceXLaunchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceXLaunchesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		795F289E2CB308A1005CC9D4 /* SpaceXLaunchesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXLaunchesTests.swift; sourceTree = "<group>"; };
-		795F28C32CB31342005CC9D4 /* APIClientLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIClientLive.swift; path = ../../../../../APIClientLive.swift; sourceTree = "<group>"; };
 		795F28C52CB31382005CC9D4 /* NetworkAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkAgent.swift; path = ../../../../NetworkAgent.swift; sourceTree = "<group>"; };
 		795F28C72CB313D4005CC9D4 /* APIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIType.swift; path = ../../../../APIType.swift; sourceTree = "<group>"; };
-		795F28C92CB31420005CC9D4 /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIClientMock.swift; path = ../../../../../APIClientMock.swift; sourceTree = "<group>"; };
 		795F28D42CB31757005CC9D4 /* SpaceXAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpaceXAPI.swift; path = ../../../../SpaceXAPI.swift; sourceTree = "<group>"; };
+		795F28D72CB32AC3005CC9D4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		795F28DB2CB32C21005CC9D4 /* LaunchDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDto.swift; sourceTree = "<group>"; };
+		795F28DF2CB332AB005CC9D4 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		795F28BE2CB312B5005CC9D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				795F28DF2CB332AB005CC9D4 /* Launch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -152,9 +155,8 @@
 		795F28BF2CB312CD005CC9D4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				795F28C02CB312DF005CC9D4 /* RequestModels */,
+				795F28D62CB32AB7005CC9D4 /* APIClient */,
 				795F28C12CB312FE005CC9D4 /* Dtos */,
-				795F28C22CB31305005CC9D4 /* APIClient */,
 				795F28C52CB31382005CC9D4 /* NetworkAgent.swift */,
 				795F28C72CB313D4005CC9D4 /* APIType.swift */,
 				795F28D42CB31757005CC9D4 /* SpaceXAPI.swift */,
@@ -162,27 +164,12 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		795F28C02CB312DF005CC9D4 /* RequestModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RequestModels;
-			sourceTree = "<group>";
-		};
 		795F28C12CB312FE005CC9D4 /* Dtos */ = {
 			isa = PBXGroup;
 			children = (
+				795F28DB2CB32C21005CC9D4 /* LaunchDto.swift */,
 			);
 			path = Dtos;
-			sourceTree = "<group>";
-		};
-		795F28C22CB31305005CC9D4 /* APIClient */ = {
-			isa = PBXGroup;
-			children = (
-				795F28C32CB31342005CC9D4 /* APIClientLive.swift */,
-				795F28C92CB31420005CC9D4 /* APIClientMock.swift */,
-			);
-			path = APIClient;
 			sourceTree = "<group>";
 		};
 		795F28CB2CB31565005CC9D4 /* Frameworks */ = {
@@ -191,6 +178,15 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		795F28D62CB32AB7005CC9D4 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				795F28D72CB32AC3005CC9D4 /* APIClient.swift */,
+			);
+			name = APIClient;
+			path = SpaceXLaunches/Dependencies/APIClient;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -308,9 +304,10 @@
 				795F28D52CB31757005CC9D4 /* SpaceXAPI.swift in Sources */,
 				795F28882CB3089F005CC9D4 /* AppDelegate.swift in Sources */,
 				795F28C82CB313D4005CC9D4 /* APIType.swift in Sources */,
-				795F28CA2CB31420005CC9D4 /* APIClientMock.swift in Sources */,
+				795F28DC2CB32C21005CC9D4 /* LaunchDto.swift in Sources */,
 				795F28C62CB31382005CC9D4 /* NetworkAgent.swift in Sources */,
-				795F28C42CB31342005CC9D4 /* APIClientLive.swift in Sources */,
+				795F28E02CB332AB005CC9D4 /* Launch.swift in Sources */,
+				795F28D82CB32AC3005CC9D4 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
