@@ -14,17 +14,17 @@ struct PaginatedResponse<Model: Codable>: Codable {
     let hasNextPage: Bool
 }
 
-struct Launch: Codable, Identifiable, Equatable {
-    let id: UUID
+struct Launch: Codable, Identifiable, Equatable, Hashable {
+    let id: String
     let name: String
     let description: String?
     let imageUrl: URL?
-    let date: Date
+    let date: Date?
 }
 
 // MARK: - Mocks
 extension Launch {
-    static func mock(id: UUID = .init()) -> Self {
+    static func mock(id: String = UUID.init().uuidString) -> Self {
         .init(
             id: id,
             name: "FalconSat",

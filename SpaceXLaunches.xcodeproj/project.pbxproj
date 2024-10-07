@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		795F28882CB3089F005CC9D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28872CB3089F005CC9D4 /* AppDelegate.swift */; };
-		795F288C2CB3089F005CC9D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F288B2CB3089F005CC9D4 /* ViewController.swift */; };
+		795F288C2CB3089F005CC9D4 /* LaunchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F288B2CB3089F005CC9D4 /* LaunchesViewController.swift */; };
 		795F28912CB308A1005CC9D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795F28902CB308A1005CC9D4 /* Assets.xcassets */; };
 		795F28942CB308A1005CC9D4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 795F28932CB308A1005CC9D4 /* Base */; };
 		795F289F2CB308A1005CC9D4 /* SpaceXLaunchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F289E2CB308A1005CC9D4 /* SpaceXLaunchesTests.swift */; };
@@ -25,6 +25,9 @@
 		795F28E82CB3CD82005CC9D4 /* ImageLoaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28E72CB3CD82005CC9D4 /* ImageLoaderClient.swift */; };
 		795F28EC2CB3D4E8005CC9D4 /* LaunchesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28EB2CB3D4E8005CC9D4 /* LaunchesModels.swift */; };
 		795F28EE2CB3D6E0005CC9D4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28ED2CB3D6E0005CC9D4 /* Date.swift */; };
+		795F28F12CB3EED0005CC9D4 /* VewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28F02CB3EED0005CC9D4 /* VewCodable.swift */; };
+		795F28F32CB3F008005CC9D4 /* LaunchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28F22CB3F008005CC9D4 /* LaunchCell.swift */; };
+		795F28F62CB57A9E005CC9D4 /* LaunchesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F28F52CB57A9E005CC9D4 /* LaunchesRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +43,7 @@
 /* Begin PBXFileReference section */
 		795F28842CB3089F005CC9D4 /* SpaceXLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		795F28872CB3089F005CC9D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		795F288B2CB3089F005CC9D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		795F288B2CB3089F005CC9D4 /* LaunchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesViewController.swift; sourceTree = "<group>"; };
 		795F28902CB308A1005CC9D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		795F28932CB308A1005CC9D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		795F28952CB308A1005CC9D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +59,9 @@
 		795F28E72CB3CD82005CC9D4 /* ImageLoaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderClient.swift; sourceTree = "<group>"; };
 		795F28EB2CB3D4E8005CC9D4 /* LaunchesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesModels.swift; sourceTree = "<group>"; };
 		795F28ED2CB3D6E0005CC9D4 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		795F28F02CB3EED0005CC9D4 /* VewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VewCodable.swift; sourceTree = "<group>"; };
+		795F28F22CB3F008005CC9D4 /* LaunchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCell.swift; sourceTree = "<group>"; };
+		795F28F52CB57A9E005CC9D4 /* LaunchesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				795F28ED2CB3D6E0005CC9D4 /* Date.swift */,
+				795F28F02CB3EED0005CC9D4 /* VewCodable.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -165,6 +172,7 @@
 		795F28BF2CB312CD005CC9D4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				795F28F42CB57A8E005CC9D4 /* RequestModels */,
 				795F28D62CB32AB7005CC9D4 /* APIClient */,
 				795F28C12CB312FE005CC9D4 /* Dtos */,
 				795F28C52CB31382005CC9D4 /* NetworkAgent.swift */,
@@ -219,9 +227,18 @@
 		795F28EF2CB3DB17005CC9D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				795F288B2CB3089F005CC9D4 /* ViewController.swift */,
+				795F288B2CB3089F005CC9D4 /* LaunchesViewController.swift */,
+				795F28F22CB3F008005CC9D4 /* LaunchCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		795F28F42CB57A8E005CC9D4 /* RequestModels */ = {
+			isa = PBXGroup;
+			children = (
+				795F28F52CB57A9E005CC9D4 /* LaunchesRequest.swift */,
+			);
+			path = RequestModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,8 +353,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				795F288C2CB3089F005CC9D4 /* ViewController.swift in Sources */,
+				795F288C2CB3089F005CC9D4 /* LaunchesViewController.swift in Sources */,
+				795F28F32CB3F008005CC9D4 /* LaunchCell.swift in Sources */,
 				795F28D52CB31757005CC9D4 /* SpaceXAPI.swift in Sources */,
+				795F28F12CB3EED0005CC9D4 /* VewCodable.swift in Sources */,
 				795F28882CB3089F005CC9D4 /* AppDelegate.swift in Sources */,
 				795F28E52CB33BDE005CC9D4 /* LaunchesViewModel.swift in Sources */,
 				795F28C82CB313D4005CC9D4 /* APIType.swift in Sources */,
@@ -346,6 +365,7 @@
 				795F28EE2CB3D6E0005CC9D4 /* Date.swift in Sources */,
 				795F28C62CB31382005CC9D4 /* NetworkAgent.swift in Sources */,
 				795F28E02CB332AB005CC9D4 /* Launch.swift in Sources */,
+				795F28F62CB57A9E005CC9D4 /* LaunchesRequest.swift in Sources */,
 				795F28D82CB32AC3005CC9D4 /* APIClient.swift in Sources */,
 				795F28EC2CB3D4E8005CC9D4 /* LaunchesModels.swift in Sources */,
 			);

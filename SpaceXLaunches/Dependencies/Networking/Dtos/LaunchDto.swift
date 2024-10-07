@@ -23,7 +23,7 @@ struct LaunchDto: Codable {
     let launchpad: String
     let flightNumber: Int
     let name: String
-    let dateUTC: Date
+    let dateUTC: String
     let dateUnix: Int
     let dateLocal: String
     let datePrecision: String
@@ -31,7 +31,7 @@ struct LaunchDto: Codable {
     let cores: [CoreDto]
     let autoUpdate, tbd: Bool
     let launchLibraryID: String?
-    let id: UUID
+    let id: String
 
     enum CodingKeys: String, CodingKey {
         case fairings, links
@@ -71,7 +71,7 @@ struct CoreDto: Codable {
 
 // MARK: - Fairings
 struct FairingsDto: Codable {
-    let reused, recoveryAttempt, recovered: Bool
+    let reused, recoveryAttempt, recovered: Bool?
     let ships: [String]
 
     enum CodingKeys: String, CodingKey {
@@ -129,7 +129,7 @@ extension Launch {
             name: launchDto.name,
             description: launchDto.details,
             imageUrl: launchDto.links.patch.small,
-            date: launchDto.dateUTC
+            date: launchEventInput.date(from: launchDto.dateUTC)
         )
     }
 }

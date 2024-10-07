@@ -9,15 +9,15 @@ import Dependencies
 import Foundation
 
 struct APIClient {
-    var fetchPastLaunches: (_ page: Int, _ pageSize: Int) async throws -> PaginatedResponse<Launch>
+    var fetchPastLaunches: (LaunchesRequest) async throws -> PaginatedResponse<Launch>
 }
 
 // MARK: - Live
 extension APIClient {
     static func live(agent: NetworkAgent) -> Self {
         .init(
-            fetchPastLaunches: { page, pageSize in
-                let response: PaginatedResponse<LaunchDto> = try await agent.run(SpaceXAPI.pastLaunches)
+            fetchPastLaunches: { request in
+                let response: PaginatedResponse<LaunchDto> = try await agent.run(SpaceXAPI.pastLaunches(request))
                 return .init(
                     docs: response.docs.map(Launch.init(launchDto:)),
                     totalPages: response.totalPages,
@@ -32,12 +32,12 @@ extension APIClient {
 // MARK: - Mock
 extension APIClient {
     static var mock: Self {
-        .init(fetchPastLaunches: { page, _ in
+        .init(fetchPastLaunches: { request in
                 .init(
-                    docs: (0...10).map { .mock(id: .init($0)) },
-                    totalPages: 10,
-                    page: page,
-                    hasNextPage: page < 10
+                    docs: (1...request.options.limit).map { _ in .mock(id: .init()) },
+                    totalPages: 5,
+                    page: request.options.page,
+                    hasNextPage: (request.options.page + 1) < 5
                 )
         })
     }

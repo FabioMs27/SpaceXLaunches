@@ -12,11 +12,15 @@ enum Launches {
 }
 
 extension Launches.Output {
-    struct Item: Identifiable {
-        let id: UUID
+    enum Section: Hashable {
+        case main
+    }
+    
+    struct Item: Identifiable, Hashable {
+        let id: String
         let name: String
         let description: String?
-        let launchDate: String
+        let launchDate: String?
         let imageUrl: URL?
     }
 }
@@ -24,11 +28,16 @@ extension Launches.Output {
 // MARK: - Mapping
 extension Launches.Output.Item {
     init(launch: Launch) {
+        let launchDate: String? = if let date = launch.date {
+            launchEventOutput.string(from: date)
+        } else {
+            nil
+        }
         self = .init(
             id: launch.id,
             name: launch.name,
             description: launch.description,
-            launchDate: launchEventOutput.string(from: launch.date),
+            launchDate: launchDate,
             imageUrl: launch.imageUrl
         )
     }

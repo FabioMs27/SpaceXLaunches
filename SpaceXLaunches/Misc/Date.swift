@@ -15,6 +15,14 @@ var launchEventOutput: DateFormatter = {
     return formatter
 }()
 
+var launchEventInput: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.timeZone = Calendar.iso8601UTC.timeZone
+    formatter.locale = Calendar.iso8601UTC.locale
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    return formatter
+}()
+
 extension Calendar {
     static let iso8601UTC: Calendar = {
         var calendar = Calendar(identifier: .iso8601)

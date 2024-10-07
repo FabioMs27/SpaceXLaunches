@@ -9,7 +9,8 @@ import Dependencies
 import Foundation
 import UIKitNavigation
 
-class LaunchesViewModel: ObservableObject {
+@Perceptible
+class LaunchesViewModel {
     
     enum RequestState {
         case inFlight
@@ -21,11 +22,12 @@ class LaunchesViewModel: ObservableObject {
         case launchDetails
     }
     
+    @PerceptionIgnored
     @Dependency(\.apiClient) var apiClient
     
-    @Published var requestState: RequestState?
-    @Published var searchQuery: String
-    @Published var launches: [Launch]
+    var requestState: RequestState?
+    var searchQuery: String
+    var launches: [Launch]
     let pageSize: Int
     
     var filteredLaunches: [Launch] {
@@ -40,10 +42,10 @@ class LaunchesViewModel: ObservableObject {
     }
     
     init(
-        requestState: RequestState?,
+        requestState: RequestState? = .none,
         searchQuery: String = .init(),
-        launches: [Launch],
-        pageSize: Int
+        launches: [Launch] = [],
+        pageSize: Int = 10
     ) {
         self.requestState = requestState
         self.searchQuery = searchQuery
@@ -61,7 +63,7 @@ extension LaunchesViewModel {
         do {
             // Fetch first page and handle state + error
             requestState = .inFlight
-            let firstResponse = try await apiClient.fetchPastLaunches(page, pageSize)
+            let firstResponse = try await apiClient.fetchPastLaunches(.init(page: page, pageSize: pageSize))
             launches = firstResponse.docs
             page = firstResponse.page + 1
             hasNextPage = firstResponse.hasNextPage
@@ -69,7 +71,7 @@ extension LaunchesViewModel {
             
             // Fetch other pages silently
             while hasNextPage,
-                  let response = try? await apiClient.fetchPastLaunches(page, pageSize) {
+                  let response = try? await apiClient.fetchPastLaunches(.init(page: page, pageSize: pageSize)) {
                 launches.append(contentsOf: response.docs)
                 page = response.page + 1
                 hasNextPage = response.hasNextPage
