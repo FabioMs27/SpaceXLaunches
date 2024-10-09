@@ -64,21 +64,26 @@ extension LaunchesViewModel {
             // Fetch first page and handle state + error
             requestState = .inFlight
             let firstResponse = try await apiClient.fetchPastLaunches(.init(page: page, pageSize: pageSize))
+            try Task.checkCancellation()
             launches = firstResponse.docs
             page = firstResponse.page + 1
             hasNextPage = firstResponse.hasNextPage
             requestState = .none
             
             // Fetch other pages silently
-            while hasNextPage,
-                  let response = try? await apiClient.fetchPastLaunches(.init(page: page, pageSize: pageSize)) {
+            while hasNextPage {
+                let response = try await apiClient.fetchPastLaunches(.init(page: page, pageSize: pageSize))
+                try Task.checkCancellation()
                 launches.append(contentsOf: response.docs)
                 page = response.page + 1
                 hasNextPage = response.hasNextPage
             }
             
-        } catch {
+        } catch where page == 0 {
             requestState = .error(description: "An Error occurred!")
+            
+        } catch {
+            print("Error fetching subsequent pages: \(error)")
         }
     }
 }

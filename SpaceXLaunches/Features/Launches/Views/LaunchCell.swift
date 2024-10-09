@@ -16,7 +16,8 @@ class LaunchCell: UICollectionViewCell {
         font: .systemFont(ofSize: 16, weight: .bold)
     )
     lazy var descriptionLabel: UILabel = buildLabel(
-        font: .systemFont(ofSize: 14, weight: .regular)
+        font: .systemFont(ofSize: 14, weight: .regular),
+        lines: 4
     )
     lazy var eventDateLabel: UILabel = buildLabel(
         font: .systemFont(ofSize: 14, weight: .regular)
@@ -24,21 +25,35 @@ class LaunchCell: UICollectionViewCell {
     
     var iconView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode         = .scaleAspectFill
-        imageView.clipsToBounds       = true
-        imageView.layer.cornerRadius  = 25
-        imageView.layer.masksToBounds = true
-        imageView.backgroundColor     = .gray
+        imageView.contentMode           = .scaleAspectFit
+        imageView.layer.masksToBounds   = false
+        imageView.layer.cornerRadius    = 22
+        imageView.layer.shouldRasterize = true
+        imageView.clipsToBounds         = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     lazy var titleStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis         = .vertical
-        stackView.spacing      = 4
+        stackView.axis            = .vertical
+        stackView.alignment       = .leading
+        stackView.spacing         = 4
         stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(descriptionLabel)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    lazy var labelsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis         = .horizontal
+        stackView.alignment    = .top
+        stackView.distribution = .fill
+        stackView.spacing      = 8
+        eventDateLabel.setContentHuggingPriority(.required, for: .horizontal)
+        stackView.addArrangedSubview(titleStackView)
+        stackView.addArrangedSubview(eventDateLabel)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -46,11 +61,11 @@ class LaunchCell: UICollectionViewCell {
     lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis         = .horizontal
+        stackView.distribution = .fill
         stackView.alignment    = .top
         stackView.spacing      = 8
         stackView.addArrangedSubview(iconView)
-        stackView.addArrangedSubview(titleStackView)
-        stackView.addArrangedSubview(eventDateLabel)
+        stackView.addArrangedSubview(labelsStackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -93,7 +108,10 @@ extension LaunchCell: ViewCodable {
             contentStackView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
             contentStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            contentStackView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor)
+            contentStackView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
+            
+            iconView.heightAnchor.constraint(equalToConstant: 100),
+            iconView.widthAnchor.constraint(equalToConstant: 100),
         ])
     }
     
@@ -111,12 +129,12 @@ extension LaunchCell: ViewCodable {
 import SwiftUI
 #Preview {
     UIViewRepresenting {
-        var cell = LaunchCell()
+        let cell = LaunchCell()
         cell.nameLabel.text = "Falcon9"
         cell.descriptionLabel.text = "Did a good job landing"
         cell.eventDateLabel.text = "8/16/2004"
-        cell.iconView.image = UIImage(systemName: "person")
+        cell.iconView.image = UIImage(named: "launch-icon-test")
         return cell
     }
-    .frame(height: 200)
+    .frame(height: 150)
 }

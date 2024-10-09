@@ -14,12 +14,11 @@ struct LaunchDto: Codable {
     let staticFireDateUTC: String?
     let staticFireDateUnix: Int?
     let net: Bool
-    let window: Int
+    let window: Int?
     let rocket: String
     let success: Bool?
     let failures: [FailureDto]
     let details: String?
-    let crew, ships, capsules, payloads: [String]
     let launchpad: String
     let flightNumber: Int
     let name: String
@@ -37,7 +36,7 @@ struct LaunchDto: Codable {
         case fairings, links
         case staticFireDateUTC = "static_fire_date_utc"
         case staticFireDateUnix = "static_fire_date_unix"
-        case net, window, rocket, success, failures, details, crew, ships, capsules, payloads, launchpad
+        case net, window, rocket, success, failures, details, launchpad
         case flightNumber = "flight_number"
         case name
         case dateUTC = "date_utc"
@@ -54,9 +53,9 @@ struct LaunchDto: Codable {
 
 // MARK: - Core
 struct CoreDto: Codable {
-    let core: String
-    let flight: Int
-    let gridfins, legs, reused, landingAttempt: Bool
+    let core: String?
+    let flight: Int?
+    let gridfins, legs, reused, landingAttempt: Bool?
     let landingSuccess: Bool?
     let landingType, landpad: String?
 
@@ -90,14 +89,14 @@ struct FailureDto: Codable {
 
 // MARK: - Links
 struct LinksDto: Codable {
-    let patch: PatchDto
-    let reddit: RedditDto
-    let flickr: FlickrDto
+    let patch: PatchDto?
+    let reddit: RedditDto?
+    let flickr: FlickrDto?
     let presskit: String?
-    let webcast: String
-    let youtubeID: String
-    let article: String
-    let wikipedia: String
+    let webcast: String?
+    let youtubeID: String?
+    let article: String?
+    let wikipedia: String?
 
     enum CodingKeys: String, CodingKey {
         case patch, reddit, flickr, presskit, webcast
@@ -128,7 +127,7 @@ extension Launch {
             id: launchDto.id,
             name: launchDto.name,
             description: launchDto.details,
-            imageUrl: launchDto.links.patch.small,
+            imageUrl: launchDto.links.patch?.small,
             date: launchEventInput.date(from: launchDto.dateUTC)
         )
     }

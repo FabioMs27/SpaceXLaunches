@@ -34,7 +34,7 @@ extension APIClient {
     static var mock: Self {
         .init(fetchPastLaunches: { request in
                 .init(
-                    docs: (1...request.options.limit).map { _ in .mock(id: .init()) },
+                    docs: (1...request.options.limit).map { _ in .mock(id: UUID().uuidString) },
                     totalPages: 5,
                     page: request.options.page,
                     hasNextPage: (request.options.page + 1) < 5

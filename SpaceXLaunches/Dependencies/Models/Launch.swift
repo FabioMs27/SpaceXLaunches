@@ -24,12 +24,12 @@ struct Launch: Codable, Identifiable, Equatable, Hashable {
 
 // MARK: - Mocks
 extension Launch {
-    static func mock(id: String = UUID.init().uuidString) -> Self {
+    static func mock(id: String = UUID.init().uuidString, imageUrl: URL? = .none) -> Self {
         .init(
             id: id,
             name: "FalconSat",
             description: "Engine failure at 33 seconds and loss of vehicle",
-            imageUrl: .none,
+            imageUrl: imageUrl,
             date: .distantPast
         )
     }
